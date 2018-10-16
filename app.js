@@ -1,6 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./main_router');
+require('dotenv').config()
+var MongoClient = require('mongodb').MongoClient;
+
+var token = process.env.DB_PASS
+var url = `mongodb+srv://reminderapi-service:${token}@reminderapi-acc-qavww.gcp.mongodb.net/lists?retryWrites=true`
+
+MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
+   const collection = client.db("reminderapi").collection("lists");
+   client.close();
+});
 
 const app = express();
 
