@@ -23,7 +23,7 @@ MongoClient.connect(url).then(function(client) {
 });
 
 router.get('/', (req, res) => {
-    res.send('Hello World');
+    res.sendFile(__dirname + '/frontend.html');
 });
 
 // Returns a list of all of our lists
@@ -39,7 +39,7 @@ router.post('/lists', (req, res) => {
     let listId = body.id;
     let listName = body.name;
     let newList = new List(listId, listName);
-    collection.insertOne(list, function(err, res) {
+    collection.insertOne(newList, function(err, res) {
         if (err) throw err;
     })
     res.send(`${listId}: ${listName}`);

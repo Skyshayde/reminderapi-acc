@@ -15,6 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.use('/',router);
 

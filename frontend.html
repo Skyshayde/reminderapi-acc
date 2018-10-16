@@ -1,0 +1,44 @@
+<style>
+    .grid-container {
+  display: grid;
+    grid-template-columns: 15%;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  text-align: left;
+}
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+label, input {
+    display: inline-block;
+}
+
+label {
+    width: 30%;
+    text-align: left;
+}
+
+label + input {
+    width: 50%;
+
+}
+
+
+input + input {
+    float: right;
+}
+​
+</style>
+<div class="grid-container">
+    <div class="grid-item">
+        <form action="/lists" method="post">
+            <label>Id:</label><input type="text" name="id"><br>
+            <label>Name:</label><input type="text" name="name"><br>
+            <input type="submit" value="Submit" style="width: 80%">
+        </form>
+    </div>
+</div>
