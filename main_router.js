@@ -1,5 +1,6 @@
 const express = require('express');
-
+const fs = require('fs')
+const path = require('path')
 var {
     List,
     ListItem
@@ -11,12 +12,9 @@ var router = express.Router();
 // Our temporary storage of Lists in our application
 var lists = [];
 
-require('dotenv').config()
 var MongoClient = require('mongodb').MongoClient;
 
-var token = process.env.DB_PASS
-console.log(token)
-var oldurl = `mongodb+srv://reminderapi-service:${token}@reminderapi-acc-qavww.gcp.mongodb.net/lists?retryWrites=true`
+var token = fs.readFileSync(path.join(process.cwd(),".env"))
 var url = `mongodb://reminderapi-service:${token}@reminderapi-acc-shard-00-00-qavww.gcp.mongodb.net:27017,reminderapi-acc-shard-00-01-qavww.gcp.mongodb.net:27017,reminderapi-acc-shard-00-02-qavww.gcp.mongodb.net:27017/test?ssl=true&replicaSet=reminderapi-acc-shard-0&authSource=admin&retryWrites=true`
 var collection
 
