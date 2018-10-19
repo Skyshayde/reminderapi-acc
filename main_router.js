@@ -9,9 +9,6 @@ var {
 // Create an express router 
 var router = express.Router();
 
-// Our temporary storage of Lists in our application
-var lists = [];
-
 var MongoClient = require('mongodb').MongoClient;
 
 var token = fs.readFileSync(path.join(process.cwd(),".env"))
